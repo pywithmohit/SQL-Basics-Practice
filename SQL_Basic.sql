@@ -1,3 +1,4 @@
+
 CREATE TABLE employee (
     emp_id INT PRIMARY KEY,
     name VARCHAR(50),
@@ -103,3 +104,55 @@ where name = 'Rohit';
 update employee 
 set age = 18
 where name = 'Priya';
+
+-- insert new values
+
+INSERT INTO employee (emp_id, name, department, salary, location,email,age)
+VALUES
+(106, 'Rohit', 'IT', 45000, 'Jaipur','rraj@gmail.com',25),
+(107, 'Akashay', 'HR', 220000, 'Delhi','Akashraj@gmail.com',55),
+(108, 'Riya', 'IT', 85000, 'Mumbai', 'Riyaraj@gmail.com',45),
+(109, 'Sneha', 'Sales', 88000, 'Jaipur','Sneharaj@gmail.com',88),
+(110, 'Prajjuual', 'Finance', 180000, 'Delhi', 'rohitraj@gmail.com',29);
+
+select *
+from employee 
+
+--Change Rohit deparment & salary
+
+update employee 
+set department = 'HR' , salary = 48000
+where emp_id = 106;
+
+-- total salary of each department
+
+select department,
+sum(salary) as total_salary
+from employee
+group by department
+order by total_salary desc;
+
+-- avg salary of each department
+
+select department,
+avg(salary) as total_salary
+from employee
+group by department
+order by total_salary desc;
+
+--name of the department in the column
+
+select distinct
+department
+from employee;
+
+--Display employee in city is >= 2
+
+SELECT location,
+       COUNT(*) AS total_emp
+FROM employee
+GROUP BY location 
+HAVING COUNT(*) >= 2;
+
+select *
+from employee
